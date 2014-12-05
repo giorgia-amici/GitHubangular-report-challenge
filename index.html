@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="GitUserSearch">
+  <head>
+   <meta charset="utf-8" /> 
+    <title>Github user search</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/gitUserSearchController.js"></script>
+  </head>
+  <body ng-controller='GitUserSearchController'>
+    <center>
+  <h1><img class="octobutton pulse" src="./public/octocat.png"></h1>
+    <div>
+     <form class="form-horizontal">
+        <input type="text" ng-model="searchTerm" ng-change="doSearch()">
+        <br>
+        <!-- For Clare, I have removed the useless button just not to get confused -->
+      </form>
+      <ul class="list-group" ng-repeat="user in searchResults.items">
+        <li class="list-group-item">
+          <img class="avatar" ng-src= "{{ user.avatar_url }}" width="80" height="80">
+           <a class="login" href="{{user.html_url}}">{{user.login}}</a>
+           Score: {{user.score}}
+           </br>
+        </li>
+      </ul>
+    </div>
+     <ul class="list-group" ng-repeat="repo in repoResults">
+      <li class="list-group-item">   
+           <a href="{{repo.zxhtml_url}}">{{ repo.name }}</a>
+           {{ repo.language }}
+      </li>
+    </ul>
+    </center>
+  </body>
+</html>
