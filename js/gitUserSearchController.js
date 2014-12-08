@@ -1,6 +1,6 @@
 GithubUserSearch.controller('GitUserSearchController', function($scope, $resource){
   
-var searchResource = $resource('https://api.github.com/search/users?access_token=ff8a6e78e60868859c7a61a800aaf3cb46885725');
+var searchResource = $resource('https://api.github.com/search/users?access_token=');
 
 $scope.doUsers = function(){
     $scope.searchResults = searchResource.get({
@@ -8,7 +8,7 @@ $scope.doUsers = function(){
     });
   };
 
-var searchRepos = $resource('https://api.github.com/users/:q/repos?access_token=ff8a6e78e60868859c7a61a800aaf3cb46885725');
+var searchRepos = $resource('https://api.github.com/users/:q/repos?access_token=');
    
 $scope.doRepos = function(){
     $scope.repoResults = searchRepos.query({
